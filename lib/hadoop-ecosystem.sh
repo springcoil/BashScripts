@@ -9,7 +9,7 @@ sudo apt-get install -y icedtea-plugin
 
 # install Maven to handle Java dependencies
 sudo apt-get install -y maven
-echo "export PATH=/usr/share/maven/bin:$PATH" >> ~/.profile
+echo "export PATH=/usr/share/maven/bin:$PATH" >> ~/.bashrc
 
 # install Apache Big Top and associated libraries
 wget -O- http://archive.apache.org/dist/bigtop/bigtop-0.5.0/repos/GPG-KEY-bigtop | sudo apt-key add -
@@ -31,20 +31,21 @@ sudo apt-get install -y mahout hive pig pig-udf-datafu giraph crunch
 sudo apt-get install -y flume-* hbase sqoop solr oozie hcatalog
 
 # alias hue
-echo "alias hue=\"/usr/lib/hue/build/env/bin/hue\"" >> ~/.profile
+echo "alias hue=\"/usr/lib/hue/build/env/bin/hue\"" >> ~/.bashrc
 
 # download and build spark and pyspark
 
 # Vagrant box specific path -- Set this to where you want Spark installed
-mkdir lib
-cd lib
-sudo wget http://spark-project.org/download/spark-0.7.3-prebuilt-cdh4.tgz
-sudo tar -zxvf spark-0.7.3-prebuilt-cdh4.tgz
-cd spark-0.7.3/
-sbt/sbt package
+# Had some trouble with the following lines so I commented them out.
+#mkdir lib
+#cd lib
+#sudo wget http://spark-project.org/download/spark-0.7.3-prebuilt-cdh4.tgz
+#sudo tar -zxvf spark-0.7.3-prebuilt-cdh4.tgz
+#cd spark-0.7.3/
+#sbt/sbt package
 
 # create an alias to run spark from anywhere in the directory tree
-CUR_DIR=$(pwd)
-echo "alias spark-repl=\"${CUR_DIR}/spark-shell\"" >> ~/.profile
+# CUR_DIR=$(pwd)
+# echo "alias spark-repl=\"${CUR_DIR}/spark-shell\"" >> ~/.bashrc
 
-. ~/.profile
+# . ~/.bashrc
